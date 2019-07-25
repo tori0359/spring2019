@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index page</h1>
+	<h1>main page</h1>
+	<p>msg param : ${msg }</p>
 </body>
 </html>
