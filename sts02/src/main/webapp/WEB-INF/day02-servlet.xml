@@ -3,16 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="dao" class="com.bit.day02.model.Day02Dao"></bean>
+
 	<bean id="beanNameUrlHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 	
 	<bean name="/index.bit" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"></property>
 	</bean>
-	<bean name="/bbs/list.bit" class="com.bit.day02.controller.ListController"></bean>
+	<bean name="/bbs/list.bit" class="com.bit.day02.controller.ListController">
+		<!-- name: setter ref : com.bit.day02.model.Day02Dao  -->
+		<property name="dao" ref="dao"></property>
+	</bean>
 	<bean name="/bbs/add.bit" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="add"></property>
 	</bean>
-	<bean name="/bbs/insert.bit" class="com.bit.day02.controller.InsertController"></bean>
+	<bean name="/bbs/insert.bit" class="com.bit.day02.controller.InsertController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"></property>
